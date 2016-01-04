@@ -21,4 +21,6 @@ public interface PartnerApi {
 
     @GET("/com.joco.nyomtserv2.partner")
     public List<Partner> getSyncListOfPartner();
+
+
 }
