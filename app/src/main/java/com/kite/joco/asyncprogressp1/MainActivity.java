@@ -7,19 +7,27 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kite.joco.asyncprogressp1.db.Partner;
+import com.kite.joco.asyncprogressp1.db.Sorszamok;
 import com.kite.joco.asyncprogressp1.rest.ServiceGen;
 import com.orm.SugarRecord;
 
 import java.util.List;
 
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     Handler asyncHandler = new Handler();
     ProgressBar pb;
+
+    EditText etTosz, etSorszam;
 
     ProgressDialog pbDialog;
 
@@ -30,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         //requestWindowFeature(Window.FEATURE_PROGRESS);
         super.onCreate(savedInstanceState);
 
+
         setContentView(R.layout.activity_main);
+        etTosz = (EditText) findViewById(R.id.etTosz);
+        etSorszam = (EditText) findViewById(R.id.etSsz);
         tvProgress = (TextView) findViewById(R.id.tvProgress);
         tvProgress.setText("0/83000");
         pb = (ProgressBar) findViewById(R.id.progressBar);
@@ -56,9 +67,34 @@ public class MainActivity extends AppCompatActivity {
                 pbDialog.show();
                 new DialogAsyncTask().execute();
                 break;
+            case R.id.btnPost:
+                sorszampost();
+                break;
             default:
                 break;
         }
+    }
+
+    private void sorszampost() {
+        Sorszamok s = new Sorszamok();
+        s.setTosz(etTosz.getText().toString());
+        s.setSorszam(etSorszam.getText().toString());
+        s.setNyomtkod("KLAP201516PROBA");
+        //s.setId(6l);
+
+        ServiceGen.get().sendujSorszam(s, new Callback<String>() {
+            @Override
+            public void success(String s, Response response) {
+                Log.i("Nyomtavany","sikeresen mentve a sorszám");
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                Log.i("Nyomtatvany","ajjajjj");
+                error.printStackTrace();
+            }
+        });
+
     }
 
     public void handleProgress(int p) {

@@ -80,7 +80,7 @@
             android:layout_height="wrap_content" />
 
         <EditText
-            android:id="@+id/ssz"
+            android:id="@+id/etSsz"
             android:hint="02"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -89,6 +89,7 @@
     <Button
         android:onClick="onClick"
         android:text="Post próba"
+        android:id="@+id/btnPost"
         android:layout_below="@+id/lnPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
