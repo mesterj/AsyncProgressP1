@@ -19,14 +19,14 @@ import retrofit.http.POST;
  */
 public interface PartnerApi {
 
-    @GET("/com.joco.nyomtserv2.partner")
+    @GET("/entities.partner")
     public void getAsyncListofPartner(Callback<List<Partner>> callback);
 
-    @GET("/com.joco.nyomtserv2.partner")
+    @GET("/entities.partner")
     public List<Partner> getSyncListOfPartner();
 
     //http://localhost:8080/NyomtServ2-1.0/webresources/com.joco.nyomtserv2.sorszamok/count
-    @POST("/com.joco.nyomtserv2.sorszamok")
+    @POST("/entities.sorszamok")
     void sendujSorszam(@Body Sorszamok sorszamok, Callback<String> callback);
 
 

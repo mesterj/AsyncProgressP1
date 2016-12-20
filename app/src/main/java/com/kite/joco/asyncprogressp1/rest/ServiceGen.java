@@ -15,8 +15,8 @@ import retrofit.converter.JacksonConverter;
  */
 public class ServiceGen {
     //public static final String API_BASE_URL = "http://192.168.1.107:8080/NyomtServ2-1.0/webresources";// home
-     public static final String API_BASE_URL = "http://192.168.86.2:8080/NyomtServ2-1.0/webresources";// work
-    // public static final String API_BASE_URL = "http://192.168.3.90/NyomtServ2-1.0/webresources"; //éles
+     //public static final String API_BASE_URL = "http://192.168.86.2:8080/NyomtServ2-1.0/webresources";// work
+     public static final String API_BASE_URL = "http://192.168.3.90/NyomtServ3-1.0/webresources"; //éles
 
     /*
         private static RestAdapter.Builder builder = new RestAdapter.Builder()
